@@ -20,18 +20,25 @@
             flex: 1;
         }
         .left-div img {
-            width: 100%;
+            width: 50%;
             max-width: 300px;
             border-radius: 8px;
-            box-shadow: 0 0 8px rgba(0,0,0,0.15);
+            /* box-shadow: 0 0 8px rgba(0,0,0,0.15); */
         }
         .right-div {
             flex: 1;
             font-size: 1.1rem;
+            text-align:center;
         }
         .right-div p {
-            margin: 0.5rem 0;
+            margin: 0rem 0;
+            color: #0d6efd;
         }
+        .contact-info {
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            border-left: 3px solid gray;
+        }        
     </style>
 </head>
 <div>
@@ -56,19 +63,28 @@
       </div>
     </div>
   </nav>  
-    <div class="card" style="width: 80%;margin: auto; margin-top:5%;">      
+    <div class="card" style="width: 80%;margin: auto;margin-bottom:2%; margin-top:5%;box-shadow: 0 0 8px rgba(0,0,0,0.15);border-radius:37px;">      
     <div class="top-row">
-        <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkillsNetwork-CD0321EN-Coursera/labs/v2/m1/images/contactus.png" alt="Contact Us - Best Cars Dealership" style="max-width:100%; height:auto;"/>
+        <img src="../static/cars.jpeg" alt="Contact Us - Best Cars Dealership" style="max-width:100%; height:auto;padding-top:3%;padding-left:3%;"/>
     </div>
+    <hr style="width: 95%; margin-left: 25px;">
     <div class="content-row">
         <div class="left-div">
-            <img src="static/contactus.png" alt="User Image" />
+            <img src="../static/contactus.png" alt="User Image" style="margin-left:20%;" />
         </div>
         <div class="right-div">
-            <p><strong>Address:</strong> 1234 Car Dealer Lane, Auto City, CA 90210</p>
-            <p><strong>Phone:</strong> (555) 123-4567</p>
-            <p><strong>Email:</strong> contact@bestcarsdealership.com</p>
-            <p><strong>Business Hours:</strong> Mon-Fri 9:00 AM - 6:00 PM</p>
+            <div class="contact-info">
+                <p><strong>Contact Customer Service</strong></p>
+                <p>support@bestcarsdealership.com</p>
+                <p><strong>Contact our National Advertising team</strong></p>
+                <p>nationalsales@bestcars.com</p>
+                <p><strong>Contact our Personal National team</strong></p>
+                <p>PR@bestcars.com</p>
+                <p><strong>Contact the bestcars.com offices</strong></p>
+                <p>312-611-1111</p>
+                <p><strong>Become a bestcars.com car dealer</strong></p>
+                <p><strong>Visit growwithbestcars.com</strong></p>
+            </div>
         </div>
     </div>
       
