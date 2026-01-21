@@ -56,7 +56,9 @@ const PostReview = () => {
       body: jsoninput,
   });
 
+  console.log("beforejson"+res);
   const json = await res.json();
+  console.log("post--"+json);
   if (json.status === 200) {
       window.location.href = window.location.origin+"/dealer/"+id;
   }
