@@ -1,12 +1,12 @@
-/* jshint esversion: 6 */
+/* jshint esversion: 8 */
 const express = require('express');
 const mongoose = require('mongoose');
 const fs = require('fs');
-const  cors = require('cors')
-const app = express()
+const  cors = require('cors');
+const app = express();
 const port = 3030;
 
-app.use(cors())
+app.use(cors());
 app.use(require('body-parser').urlencoded({ extended: false }));
 
 const reviews_data = JSON.parse(fs.readFileSync("reviews.json", 'utf8'));
@@ -19,17 +19,23 @@ const Reviews = require('./review');
 
 const Dealerships = require('./dealership');
 
-try {
-  Reviews.deleteMany({}).then(()=>{
-    Reviews.insertMany(reviews_data['reviews']);
-  });
-  Dealerships.deleteMany({}).then(()=>{
-    Dealerships.insertMany(dealerships_data['dealerships']);
-  });
-  
-} catch (error) {
-  res.status(500).json({ error: 'Error fetching documents' });
+async function resetDatabase() {
+  try {
+    await Reviews.deleteMany({});
+    await Reviews.insertMany(reviews_data.reviews);
+
+    await Dealerships.deleteMany({});
+    await Dealerships.insertMany(dealerships_data.dealerships);
+
+    console.log('Database reset successfully');
+  } catch (error) {
+    console.error('Error resetting database:', error);
+    // If inside an Express route handler, you can send response here
+    res.status(500).json({ error: 'Error fetching documents' });
+  }
 }
+
+resetDatabase();
 
 
 // Express route to home
