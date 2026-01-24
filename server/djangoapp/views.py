@@ -36,7 +36,7 @@ def get_cars(request):
             "CarModel": car_model.name,
             "CarMake": car_model.car_make.name
         })
-        
+
         return JsonResponse({"CarModels": cars})
 
 
@@ -122,7 +122,7 @@ def get_dealerships(request, state="All"):
         endpoint = "/fetchDealers"
     else:
         endpoint = "/fetchDealers/" + state
-            
+
     dealerships = get_request(endpoint)
     return JsonResponse({"status": 200, "dealers": dealerships})
 
@@ -160,8 +160,11 @@ def add_review(request):
             post_review(data)
             return JsonResponse({"status": 200})
         except Exception:
-            return JsonResponse({"status": 401,
-                                 "message": "Error in posting review"
-                            })
+            return JsonResponse(
+                {
+                    "status": 401,
+                    "message": "Error in posting review",
+                }
+            )
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
