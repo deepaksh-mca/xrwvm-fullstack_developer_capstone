@@ -20,6 +20,7 @@ from djangoapp.restapis import get_request, analyze_review_sentiments, post_revi
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
+
 def get_cars(request):
     count = CarMake.objects.filter().count()
     print(count)
@@ -30,7 +31,8 @@ def get_cars(request):
     for car_model in car_models:
         cars.append({"CarModel": car_model.name, "CarMake": car_model.car_make.name})
     return JsonResponse({"CarModels": cars})
-    
+
+
 # Create your views here.
 # Create a `login_request` view to handle sign in request
 @csrf_exempt
@@ -58,6 +60,7 @@ def logout_request(request):
     else:
         data = {"error": "Invalid request method"}
         return JsonResponse(data, status=400)
+
 
 # Create a `registration` view to handle sign up request
 @csrf_exempt
@@ -93,15 +96,17 @@ def registration(request):
         data = {"userName": username, "error": "Already Registered"}
         return JsonResponse(data)
 
+
 # # Update the `get_dealerships` view to render the index page with
 # a list of dealerships
 # Update the `get_dealerships` render list of dealerships all by default, particular state if state is passed
-def get_dealerships(request, state = "All"):
+def get_dealerships(request, state="All"):
     if (state == "All"):
         endpoint = "/fetchDealers"
     else:
         endpoint = "/fetchDealers/" + state
-        dealerships = get_request(endpoint)
+        
+    dealerships = get_request(endpoint)
     return JsonResponse({"status": 200, "dealers": dealerships})
 
 # Create a `get_dealer_reviews` view to render the reviews of a dealer
